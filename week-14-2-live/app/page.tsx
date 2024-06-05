@@ -5,6 +5,8 @@ async function getUserDetails() {
     const response = await axios.get(
       "https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details"
     );
+    //lets the loading page be there for 2 seconds
+    await new Promise((r)=>setTimeout(r,2000))
     return response.data;
   } catch (error) {
     console.error("Unable to ftech backend", error);
@@ -12,7 +14,7 @@ async function getUserDetails() {
 }
 
 export default async function Home() {
-  let UserDetails: { name: string; email: string } | null = null;
+  let UserDetails: { name: string; email: string ; address:Array} | null = null;
   try {
     //do not write const
     UserDetails = await getUserDetails();
@@ -28,7 +30,10 @@ export default async function Home() {
           <div>
             Name: {UserDetails?.name}
           </div>
-          {UserDetails?.email}
+          {UserDetails?.email} 
+          <div>
+          {UserDetails?.address.city}
+          </div>
         </div>
       </div>
     </div>
