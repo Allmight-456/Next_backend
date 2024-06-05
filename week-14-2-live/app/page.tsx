@@ -1,4 +1,6 @@
 import axios from "axios";
+import { Signup } from "@/components/Signup";
+import { Children } from "react";
 
 async function getUserDetails() {
   try {
@@ -14,7 +16,7 @@ async function getUserDetails() {
 }
 
 export default async function Home() {
-  let UserDetails: { name: string; email: string ; address:Array} | null = null;
+  let UserDetails: { name: string; email: string } | null = null;
   try {
     //do not write const
     UserDetails = await getUserDetails();
@@ -32,11 +34,7 @@ export default async function Home() {
             {/* We didn't use {UserDetails.name} because "UserDetails.name" will result in a runtime error
             whereas "UserDetails?.name" evaluates to undefined without throwing an error. */}
           </div>
-          {UserDetails?.email} 
-
-          <div>
-          {UserDetails?.address.city}
-          </div>
+          Email:{UserDetails?.email} 
         </div>
       </div>
     </div>

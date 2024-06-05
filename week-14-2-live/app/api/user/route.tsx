@@ -1,10 +1,27 @@
-//for this to run , control+c , then rerun "npm run dev"
+//for this to run save then , control+c , then rerun "npm run dev"
+//name needs to be "route.tsx" for it be consired backend, else for "page.tsx" it 
+// page.tsx will be considered as frontend
 
-export function GET(){
+import { NextRequest } from "next/server"
+
+export async function POST(req:NextRequest){
     //database logic
+
+    const body = await req.json();
+    console.log(body);
     return Response.json({
-        name:"Ishan",
-        email: "bhardwajishansingh@gmail.com",
-        address:{"city":"Begusarai","pin":"851101"}
+        msg:"You are logged in"
     })
 }
+
+export async function GET() {
+    return Response.json({
+        name:" Ishan Kumar",
+        email: " bhardwajishansingh@gmail.com",
+        
+    });
+  }
+
+
+
+        
