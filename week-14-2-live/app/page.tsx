@@ -3,7 +3,7 @@ import axios from "axios";
 async function getUserDetails() {
   try {
     const response = await axios.get(
-      "https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details"
+      "http://localhost:3000/api/user"
     );
     //lets the loading page be there for 2 seconds
     await new Promise((r)=>setTimeout(r,2000))
@@ -29,8 +29,11 @@ export default async function Home() {
         <div className="border p-8 rounded">
           <div>
             Name: {UserDetails?.name}
+            {/* We didn't use {UserDetails.name} because "UserDetails.name" will result in a runtime error
+            whereas "UserDetails?.name" evaluates to undefined without throwing an error. */}
           </div>
           {UserDetails?.email} 
+
           <div>
           {UserDetails?.address.city}
           </div>
