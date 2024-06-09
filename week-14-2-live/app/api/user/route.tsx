@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
 const client = new PrismaClient();
@@ -13,18 +13,14 @@ export async function POST(req: NextRequest) {
     },
   });
 
-  return new Response(JSON.stringify({
+  return NextResponse.json({
     msg: "You are logged in"
-  }), {
-    status: 200
   });
 }
 
 export async function GET() {
-  return new Response(JSON.stringify({
+  return  NextResponse.json({
     name: "Ishan Kumar",
     email: "bhardwajishansingh@gmail.com",
-  }), {
-    status: 200,
   });
 }
