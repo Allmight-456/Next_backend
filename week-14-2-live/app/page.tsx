@@ -1,3 +1,11 @@
+// do not forget to add .env file after git clone ,
+//also run these prsima commands if error persists
+//npx prisma init
+//npx prisma migrate reset
+//npx prisma migrate deploy
+//npx prisma generate
+//npm run dev
+
 import axios from "axios";
 import { Signup } from "@/components/Signup";
 import { Children } from "react";
